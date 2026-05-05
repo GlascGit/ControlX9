@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ControlX 9 – Offline Windows Registry & Tweak Toolkit</title>
+  <meta name="description" content="ControlX 9 is a bootable Debian USB that edits the Windows registry offline, applies debloat tweaks, injects drivers, sets game priorities, and partitions disks—all with per-key revert. Open-source and in active development.">
+  <meta property="og:title" content="ControlX 9 – Offline Windows control, reversible tweaks">
+  <meta property="og:description" content="Registry tweaks, driver injection, game priority, disk tools. All offline, all reversible. Bootable USB. Open-source.">
+  <meta property="og:image" content="https://controlx9.com/og-image.png">
+  <meta property="og:url" content="https://controlx9.com">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "ControlX 9",
+    "url": "https://controlx9.com",
+    "applicationCategory": "Utilities",
+    "operatingSystem": ["Windows 10", "Windows 11"],
+    "description": "A bootable Debian live USB for offline Windows registry editing, debloat tweaks, driver injection, game priority, and disk partitioning. Features automatic backups, per-key revert, profile sharing, and USB persistence. Open-source, zero telemetry.",
+    "author": {
+      "@type": "Person",
+      "name": "Glasc (Zer0)"
+    },
+    "applicationStatus": "PreAlpha",
+    "version": "0.0.1-dev",
+    "featureList": [
+      "Offline registry editing with automatic backups",
+      "Per-key revert for applied registry changes",
+      "Curated debloat service toggles",
+      "Driver injection and Safe Mode script queuing (planned)",
+      "GPU affinity and CPU priority settings (planned)",
+      "Disk partitioning via GParted",
+      "Profile export and import as .cx9 files",
+      "USB persistence for logs and undo snapshots"
+    ],
+    "license": "https://opensource.org/licenses/GPL-3.0",
+    "discussionUrl": "https://github.com/GlascGit/controlx9/issues",
+    "downloadUrl": "https://github.com/GlascGit/controlx9",
+    "isAccessibleForFree": true,
+    "keywords": "Windows registry offline, debloat, driver injection, game priority, bootable USB, revert tweaks, GParted, Debian live, open source"
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --text: #e1e4eb;
+      --text-secondary: #a0a6b5;
+      --accent: #5b8def;
+      --border: #2a2e3a;
+      --warning-bg: #2a2414;
+      --warning-border: #5a4a18;
+      --info-bg: #141b2d;
+      --link: #8bb4ff;
+      --max-width: 720px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); max-width: var(--max-width); margin: 2rem auto; padding: 0 1rem; line-height: 1.6; }
+    h1 { font-size: 2.8rem; text-align: center; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 0.2rem; }
+    h1 .brand { color: var(--accent); }
+    .tagline { text-align: center; font-size: 1.4rem; color: var(--text-secondary); margin-bottom: 2rem; font-weight: 400; }
+    .status-banner { background: var(--warning-bg); border: 1px solid var(--warning-border); border-radius: 6px; padding: 1rem; margin: 1.5rem 0; text-align: center; color: #f0c674; }
+    h2 { font-size: 1.3rem; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; margin-top: 2.5rem; }
+    ul { padding-left: 1.5rem; }
+    li { margin-bottom: 0.6rem; }
+    .two-col { display: flex; gap: 2rem; flex-wrap: wrap; margin: 1.2rem 0; }
+    .col { flex: 1; min-width: 220px; }
+    .note { background: var(--info-bg); padding: 1rem; border-radius: 6px; border-left: 3px solid var(--accent); }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    footer { margin-top: 3rem; text-align: center; font-size: 0.85rem; color: var(--text-secondary); border-top: 1px solid var(--border); padding-top: 1.5rem; }
+    hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+  </style>
+</head>
+<body>
+<div style="text-align: center; margin-bottom: 2rem;">
+  <img src="imgx.png" alt="ControlX 9 logo" style="width: 120px; height: auto; border-radius: 16px; display: inline-block;">
+</div>
+</div></div>
+  </div>
+  <h1><span class="brand">ControlX 9</span></h1>
+  <div class="tagline">Offline Windows configuration, booted from a USB stick.</div>
+
+  <div class="status-banner">
+    <strong>⚠️ Pre‑alpha – no public release yet.</strong><br>
+    The first version focuses on registry editing with ~20 debloat toggles and per‑key revert.
+    All other features are part of the roadmap. Star the repo to track progress.
+  </div>
+
+  <p>ControlX 9 is a bootable Debian live environment designed to manage a Windows installation without booting into it. Its primary goal: let you apply a known‑good set of tweaks, inject drivers, set game priorities, and partition disks—all from one tool, with a reliable undo mechanism. No more juggling three different ISOs and a pile of PowerShell scripts.</p>
+
+  <h2>What it will do (roadmap)</h2>
+  <div class="two-col">
+    <div class="col">
+      <h3>Registry &amp; Services (first release)</h3>
+      <ul>
+        <li>Offline registry editing – no Windows process interference</li>
+        <li>Pre‑defined debloat toggles (printer, fax, server, NetBIOS, etc.)</li>
+        <li>Automatic backup (3 copies) before modifications</li>
+        <li>Per‑key revert for every registry change applied</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>Drivers &amp; Gaming (planned)</h3>
+      <ul>
+        <li>Driver file placement with Safe Mode script queuing</li>
+        <li>GPU affinity and CPU priority settings via registry</li>
+        <li>Per‑game profiles – no background process lasso needed</li>
+      </ul>
+    </div>
+  </div>
+  <div class="two-col">
+    <div class="col">
+      <h3>Profiles &amp; Sharing</h3>
+      <ul>
+        <li>Export/import tweak sets as <code>.cx9</code> files</li>
+        <li>USB persistence stores profiles, logs, and undo snapshots</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>Built‑in Tools</h3>
+      <ul>
+        <li>GParted for disk partitioning</li>
+        <li>Additional rescue utilities (browser, bootloader fixers, etc.) – all credited</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>What it is NOT</h2>
+  <ul>
+    <li>Not a bootloader repair tool – but includes helper utilities for convenience</li>
+    <li>Not a magic FPS booster – changes are transparent registry modifications</li>
+    <li>Not malware, not spyware – fully open‑source, zero telemetry, no phone home</li>
+    <li>Not a competitor to existing Windows tweak tools – it’s a different approach (offline)</li>
+  </ul>
+
+  <div class="note">
+    <strong>Why boot from USB?</strong><br>
+    Windows restrictions, running services, and self‑repair mechanisms often undo tweaks applied from within the OS. ControlX 9 mounts the system drive while Windows is offline, edits the registry hives directly, and leaves. If a tweak causes a boot failure, you boot back into the USB and revert.
+  </div>
+
+  <h2>Get Involved</h2>
+  <p>The project is open source (GPL‑3.0) and developed in the open at <a href="https://github.com/GlascGit/controlx9" target="_blank">GitHub</a>. Early testers, hardware reports, and pull requests are welcome once the first alpha drops. Right now, you can star the repo or open an issue to discuss features and requirements.</p>
+  <p>Built by <strong>Glasc (Zer0)</strong> – a personal tool, shared publicly.</p>
+
+  <footer>
+    <p>controlx9.com · No cookies, no tracking, no bullshit.</p>
+  </footer>
+</body>
+</html>
